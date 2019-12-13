@@ -19,22 +19,19 @@ function genPassword() {
   console.log(pwgen);
   console.log(pwgen.length);
   writePassword(pwgen);
+  userChoice.pwdChars = ["abcdefghijklmnopqrstuvwxyz"];
 }
 
 function userPrompts() {
   userResponse = prompt("Enter password length from 8-128");
 
   userChoice.pwLength = parseInt(userResponse);
-  // var pwdChars =
-  //   "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-  // console.log(userChoice.pwLength);
-  // console.log(typeof userChoice.pwLength);
   userResponse = confirm("Use special characters?");
   console.log(userResponse);
 
   if (userResponse) {
-    userChoice.pwdChars.push("!@#$&");
+    userChoice.pwdChars.push("!@#$&*");
   }
 
   userResponse = confirm("Use numeric characters?");
