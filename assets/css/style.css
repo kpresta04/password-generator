@@ -1,6 +1,7 @@
 #pgenerator {
   resize: none;
   border-style: dashed;
+  text-align: center;
 }
 button {
   margin: auto;
@@ -13,4 +14,12 @@ body {
 
 #mainFrame {
   height: 70%;
+}
+
+#cardDiv {
+  border-width: 4px;
+  border-color: black;
+}
+h1 {
+  text-align: center;
 }
