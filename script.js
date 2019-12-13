@@ -18,6 +18,7 @@ function genPassword() {
     .join("");
   console.log(pwgen);
   console.log(pwgen.length);
+  writePassword(pwgen);
 }
 
 function userPrompts() {
@@ -58,16 +59,14 @@ function userPrompts() {
 }
 
 // Write password to the #password input
-// function writePassword() {
+function writePassword(password) {
+  var passwordText = document.querySelector("#pgenerator");
 
-//   //   var password = generatePassword();
-//   //   var passwordText = document.querySelector("#password");
+  passwordText.value = password;
 
-//   //   passwordText.value = password;
-
-//   //   copyBtn.removeAttribute("disabled");
-//   //   copyBtn.focus();
-// }
+  // copyBtn.removeAttribute("disabled");
+  // copyBtn.focus();
+}
 
 function copyToClipboard() {
   var copyText = document.getElementById("pgenerator");
