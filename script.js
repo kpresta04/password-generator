@@ -4,45 +4,70 @@ var copyBtn = document.querySelector("#copyButton");
 
 var userChoice = {
   pwLength: null,
-  specialChar: false,
-  numericChar: false,
-  lowerCase: true,
-  upperCase: false
+  pwdChars: ["abcdefghijklmnopqrstuvwxyz"]
 };
+
+function genPassword() {
+  var pwdChars = userChoice.pwdChars;
+  var pwdLen = userChoice.pwLength;
+  var pwgen = Array(pwdLen)
+    .fill(pwdChars)
+    .map(function(x) {
+      return x[Math.floor(Math.random() * x.length)];
+    })
+    .join("");
+  console.log(pwgen);
+  console.log(pwgen.length);
+}
 
 function userPrompts() {
   userResponse = prompt("Enter password length from 8-128");
 
   userChoice.pwLength = parseInt(userResponse);
+  // var pwdChars =
+  //   "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-  console.log(userChoice.pwLength);
-  console.log(typeof userChoice.pwLength);
+  // console.log(userChoice.pwLength);
+  // console.log(typeof userChoice.pwLength);
   userResponse = confirm("Use special characters?");
-  userChoice.specialChar = userResponse;
+  console.log(userResponse);
+
+  if (userResponse) {
+    userChoice.pwdChars.push("!@#$&");
+  }
 
   userResponse = confirm("Use numeric characters?");
-  userChoice.numericChar = userResponse;
+  console.log(userResponse);
+
+  if (userResponse) {
+    userChoice.pwdChars.push("0123456789");
+  }
 
   userResponse = confirm(
     "Mix lower and uppercase? Click cancel for lowercase only"
   );
+  console.log(userResponse);
+
   if (userResponse) {
-    userChoice.upperCase = true;
+    userChoice.pwdChars.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
   }
+  console.log(userChoice.pwdChars);
+  // pwgen = randPassword(userChoice.pwLength);
+  userChoice.pwdChars = userChoice.pwdChars.join("");
+  genPassword();
 }
 
 // Write password to the #password input
-function writePassword() {
-  userChoice.pwLength = "hello";
-  console.log(userChoice.pwLength);
-  //   var password = generatePassword();
-  //   var passwordText = document.querySelector("#password");
+// function writePassword() {
 
-  //   passwordText.value = password;
+//   //   var password = generatePassword();
+//   //   var passwordText = document.querySelector("#password");
 
-  //   copyBtn.removeAttribute("disabled");
-  //   copyBtn.focus();
-}
+//   //   passwordText.value = password;
+
+//   //   copyBtn.removeAttribute("disabled");
+//   //   copyBtn.focus();
+// }
 
 function copyToClipboard() {
   var copyText = document.getElementById("pgenerator");
