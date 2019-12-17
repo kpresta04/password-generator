@@ -19,7 +19,7 @@ function genPassword() {
   console.log(pwgen);
   console.log(pwgen.length);
   var valid = false;
-  var specialSub = ["!", "@", "#", "$", "&"],
+  var specialSub = ["!", "@", "#", "$", "&", "*"],
     length = specialSub.length;
   while (length--) {
     if (pwgen.indexOf(specialSub[length]) != -1) {
