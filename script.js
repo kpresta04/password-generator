@@ -4,8 +4,21 @@ var copyBtn = document.querySelector("#copyButton");
 
 var userChoice = {
   pwLength: null,
-  pwdChars: ["abcdefghijklmnopqrstuvwxyz"]
+  pwdChars: ["abcdefghijklmnopqrstuvwxyz"],
+  lowerChars: "abcdefghijklmnopqrstuvwxyz",
+  numberChars: "123456789",
+  upperChars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 };
+
+function pwChecker(password, subArray) {
+  //Checks each character in the array if its included in the password
+  for (var i = 0; i < subArray.length; i++) {
+    if (password.includes(subArray[i])) {
+      console.log("Pw contains " + subArray[i]);
+      return true;
+    }
+  }
+}
 
 function genPassword() {
   var pwdChars = userChoice.pwdChars;
@@ -19,14 +32,26 @@ function genPassword() {
   console.log(pwgen);
   console.log(pwgen.length);
   var valid = false;
-  var specialSub = ["!", "@", "#", "$", "&", "*"],
-    length = specialSub.length;
-  while (length--) {
-    if (pwgen.indexOf(specialSub[length]) != -1) {
-      console.log("Pw contains special characters");
-      valid = true;
-    }
-  }
+  var lowerSub = userChoice.lowerChars.split("");
+  var numberSub = userChoice.numberChars.split("");
+  var specialSub = ["!", "@", "#", "$", "&", "*"];
+  var upperSub = userChoice.upperChars.split("");
+
+  console.log(lowerSub);
+  console.log(pwChecker(pwgen, lowerSub));
+
+  pwChecker(pwgen, numberSub);
+  pwChecker(pwgen, specialSub);
+  pwChecker(pwgen, upperSub);
+
+  // var specialSub = ["!", "@", "#", "$", "&", "*"],
+  //   length = specialSub.length;
+  // while (length--) {
+  //   if (pwgen.indexOf(specialSub[length]) != -1) {
+  //     console.log("Pw contains special characters");
+  //     valid = true;
+  //   }
+  // }
   writePassword(pwgen);
   userChoice.pwdChars = ["abcdefghijklmnopqrstuvwxyz"];
 }
@@ -77,7 +102,7 @@ function userPrompts() {
     if (userResponse) {
       userChoice.pwdChars.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
     }
-    console.log(userChoice.pwdChars[0].split(""));
+    // console.log(userChoice.pwdChars[0].split(""));
     // pwgen = randPassword(userChoice.pwLength);
     userChoice.pwdChars = userChoice.pwdChars.join("");
     genPassword();
