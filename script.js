@@ -18,6 +18,15 @@ function genPassword() {
     .join("");
   console.log(pwgen);
   console.log(pwgen.length);
+  var valid = false;
+  var specialSub = ["!", "@", "#", "$", "&"],
+    length = specialSub.length;
+  while (length--) {
+    if (pwgen.indexOf(specialSub[length]) != -1) {
+      console.log("Pw contains special characters");
+      valid = true;
+    }
+  }
   writePassword(pwgen);
   userChoice.pwdChars = ["abcdefghijklmnopqrstuvwxyz"];
 }
@@ -68,7 +77,7 @@ function userPrompts() {
     if (userResponse) {
       userChoice.pwdChars.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
     }
-    console.log(userChoice.pwdChars);
+    console.log(userChoice.pwdChars[0].split(""));
     // pwgen = randPassword(userChoice.pwLength);
     userChoice.pwdChars = userChoice.pwdChars.join("");
     genPassword();
