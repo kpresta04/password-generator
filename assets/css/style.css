@@ -40,3 +40,8 @@ h1 {
   margin-bottom: 1em;
   display: flex;
 }
+
+#uppercase {
+  vertical-align: middle;
+  padding-top: 1em;
+}
