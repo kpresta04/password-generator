@@ -1,7 +1,8 @@
-#pgenerator {
+#result {
   resize: none;
   border-style: dashed;
   text-align: center;
+  height: calc(1.5em + 0.75rem + 2px);
 }
 button {
   margin: auto;

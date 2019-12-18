@@ -41,13 +41,17 @@ generateBtn.addEventListener("click", () => {
   const hasNumber = numbersEl.checked;
   const hasSymbol = symbolsEl.checked;
 
-  resultEl.innerText = generatePassword(
-    hasLower,
-    hasUpper,
-    hasNumber,
-    hasSymbol,
-    length
-  );
+  if (length < 8 || length > 128) {
+    alert("Password length must be between 8-128");
+  } else {
+    resultEl.innerText = generatePassword(
+      hasLower,
+      hasUpper,
+      hasNumber,
+      hasSymbol,
+      length
+    );
+  }
 });
 
 function generatePassword(lower, upper, number, symbol, length) {
