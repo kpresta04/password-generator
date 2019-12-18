@@ -24,3 +24,18 @@ body {
 h1 {
   text-align: center;
 }
+
+#pwLengthLabel {
+  vertical-align: middle;
+  padding-top: 1em;
+}
+
+#length {
+  height: 2em;
+  vertical-align: middle;
+  margin-top: 0.75em;
+}
+
+#buttonRow {
+  margin-bottom: 1em;
+}

@@ -49,61 +49,45 @@
             </div>
             <div class="row">
               <!-- </div> -->
-              <div class="settings">
+              <label class="mx-3" id="pwLengthLabel">Password length</label>
+              <input type="number" id="length" min="8" max="128" value="8" />
+            </div>
+            <div class="row">
+              <div class="col">
                 <div class="setting">
-                  <label>Password length</label>
-                  <input
-                    type="number"
-                    id="length"
-                    min="8"
-                    max="128"
-                    value="8"
-                  />
-                </div>
-                <div class="row">
-                  <div class="col-3">
-                    <div class="setting">
-                      <label>Include uppercase letters</label>
-                      <input type="checkbox" id="uppercase" checked />
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="setting">
-                      <label>Include lowercase letters</label>
-                      <input type="checkbox" id="lowercase" checked />
-                    </div>
-                  </div>
-                  <div class="setting">
-                    <div class="col-3">
-                      <label>Include numbers</label>
-                      <input type="checkbox" id="numbers" checked />
-                    </div>
-                    <div class="setting">
-                      <div class="col-3">
-                        <label>Include symbols</label>
-                        <input type="checkbox" id="symbols" checked />
-                      </div>
-                    </div>
-                  </div>
+                  <label> Uppercase</label>
+                  <input type="checkbox" id="uppercase" checked />
                 </div>
               </div>
+              <div class="col">
+                <label> Lowercase</label>
+                <input type="checkbox" id="lowercase" checked />
+              </div>
+              <div class="col">
+                <label> Numbers</label>
+                <input type="checkbox" id="numbers" checked />
+              </div>
+              <div class="col">
+                <label> Symbols</label>
+                <input type="checkbox" id="symbols" checked />
+              </div>
             </div>
-            <div class="row justify-content-between">
-              <button
-                type="button"
-                class="mt-2  btn btn-danger"
-                id="generateButton"
-              >
-                Generate password
-              </button>
-              <button
-                type="button"
-                class="mt-2 btn btn-secondary"
-                id="copyButton"
-              >
-                Copy to clipboard
-              </button>
-            </div>
+          </div>
+          <div class="row-sm justify-content-center" id="buttonRow">
+            <button
+              type="button"
+              class="mt-2  btn btn-danger"
+              id="generateButton"
+            >
+              Generate password
+            </button>
+            <button
+              type="button"
+              class="mt-2 btn btn-secondary"
+              id="copyButton"
+            >
+              Copy to clipboard
+            </button>
           </div>
         </div>
       </div>
