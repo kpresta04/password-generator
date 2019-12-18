@@ -38,4 +38,5 @@ h1 {
 
 #buttonRow {
   margin-bottom: 1em;
+  display: flex;
 }
