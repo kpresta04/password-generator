@@ -3,6 +3,8 @@
   border-style: dashed;
   text-align: center;
   height: calc(1.5em + 0.75rem + 2px);
+  font-size: 2rem;
+  background-color: white;
 }
 button {
   margin: auto;
