@@ -33,9 +33,8 @@ h1 {
 }
 
 #length {
-  height: 2em;
-  vertical-align: middle;
-  margin-top: 0.75em;
+  font-size: small;
+  line-height: normal;
 }
 
 #buttonRow {
