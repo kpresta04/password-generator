@@ -30,14 +30,45 @@
             <hr />
 
             <div class="row">
-              <textarea
+              <!-- <textarea
                 name="pwgen"
                 class="w-100"
                 id="pgenerator"
                 cols="30"
                 rows="10"
                 placeholder="Your secure password"
-              ></textarea>
+              ></textarea> -->
+              <div class="result-container">
+                <span id="result"></span>
+                <button class="btn" id="clipboard">
+                  <i class="far fa-clipboard"></i>
+                </button>
+              </div>
+              <div class="settings">
+                <div class="setting">
+                  <label>Password length</label>
+                  <input type="number" id="length" min='8' max='128' value='8' />
+                </div>
+                <div class="setting">
+                  <label>Include uppercase letters</label> 
+                  <input type="checkbox" id="uppercase" checked />
+                </div>
+                <div class="setting">
+                  <label>Include lowercase letters</label> 
+                  <input type="checkbox" id="lowercase" checked />
+                </div>
+                <div class="setting">
+                  <label>Include numbers</label> 
+                  <input type="checkbox" id="numbers" checked />
+                </div>
+                <div class="setting">
+                  <label>Include symbols</label> 
+                  <input type="checkbox" id="symbols" checked />
+                </div>
+              </div>
+              
+            </div>
+            
             </div>
             <div class="row justify-content-between">
               <button
