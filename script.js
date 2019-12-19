@@ -11,13 +11,6 @@ const symbolsEl = document.getElementById("symbols");
 const generateEl = document.getElementById("generate");
 const clipboard = document.getElementById("clipboard");
 
-const randomFunc = {
-  lower: getRandomLower,
-  upper: getRandomUpper,
-  number: getRandomNumber,
-  symbol: getRandomSymbol
-};
-
 var checkBoxes = {
   hasLower: true,
   hasUpper: true,
@@ -26,7 +19,10 @@ var checkBoxes = {
 };
 copyBtn.addEventListener("click", copyToClipboard);
 
-generateBtn.addEventListener("click", () => {
+generateBtn.addEventListener("click", generateClicked);
+
+function generateClicked() {
+  //Determine which boxes are checked and run function to generate password
   const length = +lengthEl.value;
   checkBoxes.hasLower = lowercaseEl.checked;
   checkBoxes.hasUpper = uppercaseEl.checked;
@@ -44,15 +40,11 @@ generateBtn.addEventListener("click", () => {
       length
     );
   }
-});
+}
 
 function generatePassword(lower, upper, number, symbol, length) {
   var generatedPassword = "";
   const typesCount = lower + upper + number + symbol;
-  const typesArr = [{ lower }, { upper }, { number }, { symbol }].filter(
-    item => Object.values(item)[0]
-  );
-  // console.log(typesArr);
 
   // Do nothing if no options selected
   if (typesCount === 0) {
