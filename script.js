@@ -17,47 +17,67 @@ const randomFunc = {
   number: getRandomNumber,
   symbol: getRandomSymbol
 };
+
+var checkBoxes = {
+  hasLower: true,
+  hasUpper: true,
+  hasSymbol: true,
+  hasNumber: true
+};
 copyBtn.addEventListener("click", copyToClipboard);
 
 generateBtn.addEventListener("click", () => {
   const length = +lengthEl.value;
-  const hasLower = lowercaseEl.checked;
-  const hasUpper = uppercaseEl.checked;
-  const hasNumber = numbersEl.checked;
-  const hasSymbol = symbolsEl.checked;
+  checkBoxes.hasLower = lowercaseEl.checked;
+  checkBoxes.hasUpper = uppercaseEl.checked;
+  checkBoxes.hasNumber = numbersEl.checked;
+  checkBoxes.hasSymbol = symbolsEl.checked;
 
   if (length < 8 || length > 128) {
     alert("Password length must be between 8-128");
   } else {
     resultEl.innerText = generatePassword(
-      hasLower,
-      hasUpper,
-      hasNumber,
-      hasSymbol,
+      checkBoxes.hasLower,
+      checkBoxes.hasUpper,
+      checkBoxes.hasNumber,
+      checkBoxes.hasSymbol,
       length
     );
   }
 });
 
 function generatePassword(lower, upper, number, symbol, length) {
-  let generatedPassword = "";
+  var generatedPassword = "";
   const typesCount = lower + upper + number + symbol;
   const typesArr = [{ lower }, { upper }, { number }, { symbol }].filter(
     item => Object.values(item)[0]
   );
+  // console.log(typesArr);
 
-  // Doesn't have a selected type
+  // Do nothing if no options selected
   if (typesCount === 0) {
+    alert("No options selected");
     return "";
   }
 
-  // create a loop
-  for (let i = 0; i < length; i += typesCount) {
-    typesArr.forEach(type => {
-      const funcName = Object.keys(type)[0];
-      generatedPassword += randomFunc[funcName]();
-    });
+  // Loop adds 1 char for each type while i < length
+  for (var i = 0; i < length; i++) {
+    if (checkBoxes.hasUpper) {
+      generatedPassword += getRandomUpper();
+    }
+    if (checkBoxes.hasLower) {
+      generatedPassword += getRandomLower();
+    }
+
+    if (checkBoxes.hasNumber) {
+      generatedPassword += getRandomNumber();
+    }
+    if (checkBoxes.hasSymbol) {
+      generatedPassword += getRandomSymbol();
+    }
   }
+
+  // console.log(generatedPassword);
 
   const finalPassword = generatedPassword.slice(0, length);
 
@@ -81,21 +101,6 @@ function getRandomSymbol() {
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
-// SOCIAL PANEL JS
-const floating_btn = document.querySelector(".floating-btn");
-const close_btn = document.querySelector(".close-btn");
-const social_panel_container = document.querySelector(
-  ".social-panel-container"
-);
-
-floating_btn.addEventListener("click", () => {
-  social_panel_container.classList.toggle("visible");
-});
-
-close_btn.addEventListener("click", () => {
-  social_panel_container.classList.remove("visible");
-});
-
 function copyToClipboard() {
   var copyText = document.getElementById("result");
   const password = copyText.textContent;
@@ -114,9 +119,3 @@ function copyToClipboard() {
   /* Alert the copied text */
   alert("Copied to clipboard");
 }
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", userPrompts);
-
-// BONUS EVENT LISTENER
-copyBtn.addEventListener("click", copyToClipboard);
